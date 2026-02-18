@@ -9,9 +9,13 @@ import { Switch, Route } from "react-router-dom";
 import Page404 from "./components/Page404";
 
 function App() {
+  // For storing movie results
   const [searchResults, setSearchResults] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  // Fetch results and convert to JSON
+  // Executes whenever search text changes
+  // If something in searchText, fetch closest matching movies
   useEffect(() => {
     if (searchText) {
       fetch(
@@ -24,6 +28,7 @@ function App() {
     }
   }, [searchText]);
 
+  // Render results
   return (
     <div>
       <Navbar searchText={searchText} setSearchText={setSearchText} />
